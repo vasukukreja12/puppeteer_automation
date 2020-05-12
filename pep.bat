@@ -1,1 +1,1 @@
-node "script.js" "credentials.json" "https://www.glassdoor.co.in/Job/new-delhi-java-developer-jobs-SRCH_IL.0,9_IC2891681_KO10,24.htm"
+node "script.js" "credentials.json"
