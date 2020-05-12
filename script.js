@@ -28,13 +28,7 @@ let pUrl = process.argv[3];
     ])
     
     await tab.goto(pUrl, { waitUntil: "networkidle2" });
-    await tab.waitForSelector("div[data-key=tab_posts]");
-    //  post => click => reroute=> 2 times=> 2 times (wait for navigation)
     await page.screenshot({ path: './image.png', fullPage: true });
-    await Promise.all([
-      tab.click("div[data-key=tab_posts]"),
-      tab.waitForNavigation({waitUntil:"networkidle2"})
-    ])
   } catch (err) {
     console.log(err)
   }
