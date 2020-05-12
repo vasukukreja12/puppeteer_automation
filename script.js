@@ -2,7 +2,6 @@ let puppeteer = require("puppeteer");
 let cFile = process.argv[2];
 let fs = require("fs");
 let pUrl = process.argv[3];
-let nPost = process.argv[4];
 (async function () {
   
   try {
