@@ -1,7 +1,6 @@
 let puppeteer = require("puppeteer");
 let cFile = process.argv[2];
 let fs = require("fs");
-let pUrl = process.argv[3];
 (async function () {
   
   try {
@@ -26,9 +25,20 @@ let pUrl = process.argv[3];
         waitUntil: "networkidle2"
       })
     ])
-    
-    await tab.goto(pUrl, { waitUntil: "networkidle2" });
+    await tab.waitForSelector("input[type=text]");
+    await tab.type("input[type=text]", "java developer", { delay: 20 }); 
+    await Promise.all([
+      tab.click("button[type=submit]"), tab.waitForNavigation({
+        waitUntil: "networkidle2"
+      })
+    ])
+    await Promise.all([
+      tab.click("button[type=button]"), tab.waitForNavigation({
+        waitUntil: "networkidle2"
+      })
+    ])
     await page.screenshot({ path: './image.png', fullPage: true });
+  
   } catch (err) {
     console.log(err)
   }
